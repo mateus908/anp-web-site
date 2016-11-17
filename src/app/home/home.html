@@ -1,0 +1,68 @@
+<div class="box" ng-controller="HomeController">
+	<div class="box-header">
+		<h2>ANP Fuel Price</h2>
+	</div>
+	<div class="box-body">
+		<div class="row">
+			<div class="col-sm-12">
+				<select ng-model='selectedState' ng-options='obj.name for obj in states'></select>
+				<select ng-model='selectedFuel' ng-options='obj.name for obj in fuel_types'></select>
+				<button ng-click='callAPI()'>Search</button>
+			</div>
+		</div>
+
+		<br><br>
+
+		<div class="row" style="margin: 10px;">
+			<div class="table-responsive">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th rowspan="2" style="vertical-align:middle">City</th>
+							<th colspan="5">Consumer's Price</th>
+							<th colspan="4">Distribution's Price</th>
+						</tr>
+						<tr>
+							<th>Average Price</th>
+							<th>Standard Deviation</th>
+							<th>Minimum Price</th>
+							<th>Maximum Price</th>
+							<th>Average Margin</th>
+							<th>Average Price</th>
+							<th>Standard Deviation</th>
+							<th>Minimum Price</th>
+							<th>Maximum Price</th>
+						</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>Cruzeiro do Sul</td>
+						<td>4.468</td>
+						<td>0,062</td>
+						<td>4,350</td>
+						<td>4,510</td>
+						<td>0,747</td>
+						<td>4.468</td>
+						<td>0,062</td>
+						<td>4,350</td>
+						<td>4,510</td>
+					</tr>
+					<tr>
+						<td>Rio Branco</td>
+						<td>4.468</td>
+						<td>0,062</td>
+						<td>4,350</td>
+						<td>4,510</td>
+						<td>0,747</td>
+						<td>4.468</td>
+						<td>0,062</td>
+						<td>4,350</td>
+						<td>4,510</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
