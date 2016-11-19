@@ -7,7 +7,7 @@
         .controller('HomeController', HomeController);
 
     /** @ngInject */
-    function HomeController($scope) {
+    function HomeController($scope, $http) {
         var vm = this;
         
         $scope.selectedstate = 0;
@@ -51,8 +51,11 @@
         ];
 
         $scope.callAPI = function() {
-            //
-        }
+            $http.get('http://localhost:3005/api/v1/prices')
+            .then(function(response) {
+                $scope.greeting = response.data;
+            });
+        };
     }
 
 })();

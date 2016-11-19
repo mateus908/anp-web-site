@@ -8,6 +8,8 @@
 				<select ng-model='selectedState' ng-options='obj.name for obj in states'></select>
 				<select ng-model='selectedFuel' ng-options='obj.name for obj in fuel_types'></select>
 				<button ng-click='callAPI()'>Search</button>
+				<p>The ID is {{greeting.id}}</p>
+				<p>The content is {{greeting.message}}</p>
 			</div>
 		</div>
 
