@@ -5,11 +5,21 @@
 	<div class="box-body">
 		<div class="row">
 			<div class="col-sm-12">
-				<select ng-model='selectedState' ng-options='obj.name for obj in states'></select>
-				<select ng-model='selectedFuel' ng-options='obj.name for obj in fuel_types'></select>
-				<button ng-click='callAPI()'>Search</button>
-				<p>The ID is {{greeting.id}}</p>
-				<p>The content is {{greeting.message}}</p>
+				<button ng-click='callAPI()'>Call API</button>
+				<p>{{responseStatusMessage}}</p>
+			</div>
+			<br>
+			<div class="col-sm-12">
+				<select ng-model='selectedState'
+						ng-init="selectedState=states[0]"
+						ng-options='obj.name for obj in states'
+						ng-change="updateFilter()">
+				</select>
+				<select ng-model='selectedFuel'
+						ng-init="selectedFuel=fuelTypes[0]"
+						ng-options='obj.name for obj in fuelTypes'
+						ng-change="updateFilter()">
+				</select>
 			</div>
 		</div>
 
@@ -37,30 +47,18 @@
 						</tr>
 					</thead>
 					<tbody>
-					<tr>
-						<td>Cruzeiro do Sul</td>
-						<td>4.468</td>
-						<td>0,062</td>
-						<td>4,350</td>
-						<td>4,510</td>
-						<td>0,747</td>
-						<td>4.468</td>
-						<td>0,062</td>
-						<td>4,350</td>
-						<td>4,510</td>
-					</tr>
-					<tr>
-						<td>Rio Branco</td>
-						<td>4.468</td>
-						<td>0,062</td>
-						<td>4,350</td>
-						<td>4,510</td>
-						<td>0,747</td>
-						<td>4.468</td>
-						<td>0,062</td>
-						<td>4,350</td>
-						<td>4,510</td>
-					</tr>
+						<tr ng-repeat="cityStatistic in tableCityStatatistics | orderBy:'name'">
+							<td>{{cityStatistic.name}}</td>
+							<td>{{cityStatistic.statistic.consumer_price.cp_avgPrice}}</td>
+							<td>{{cityStatistic.statistic.consumer_price.cp_stdDeviation}}</td>
+							<td>{{cityStatistic.statistic.consumer_price.cp_minPrice}}</td>
+							<td>{{cityStatistic.statistic.consumer_price.cp_maxPrice}}</td>
+							<td>{{cityStatistic.statistic.consumer_price.cp_avgMargin}}</td>
+							<td>{{cityStatistic.statistic.distribution_price.dp_avgPrice}}</td>
+							<td>{{cityStatistic.statistic.distribution_price.dp_stdDeviation}}</td>
+							<td>{{cityStatistic.statistic.distribution_price.dp_minPrice}}</td>
+							<td>{{cityStatistic.statistic.distribution_price.dp_maxPrice}}</td>
+						</tr>
 					</tbody>
 				</table>
 			</div>

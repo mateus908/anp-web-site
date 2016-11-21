@@ -10,7 +10,7 @@
     function HomeController($scope, $http) {
         var vm = this;
         
-        $scope.selectedstate = 0;
+        $scope.selectedState = {};
         $scope.states = [
             { id: 0, name: 'Acre' },
             { id: 1, name: 'Alagoas' },
@@ -40,8 +40,8 @@
             { id: 25, name: 'Sergipe' },
             { id: 26, name: 'Tocantins' }
         ];
-        $scope.selectedFuel = 0;
-        $scope.fuel_types = [
+        $scope.selectedFuel = {};
+        $scope.fuelTypes = [
             { id: 0, name: 'Gasolina' },
             { id: 1, name: 'Etanol' },
             { id: 2, name: 'GNV' },
@@ -50,11 +50,56 @@
             { id: 5, name: 'GLP' }
         ];
 
+        $scope.jsonStates = [];
+        $scope.tableCityStatatistics = [];
         $scope.callAPI = function() {
             $http.get('http://localhost:3005/api/v1/prices')
             .then(function(response) {
-                $scope.greeting = response.data;
+                // API Call succeded
+                $scope.jsonStates = response.data;
+                $scope.responseStatusMessage = 'Success on calling the API!!';
+                var tableState = $scope.jsonStates.filter(function (currentState) {
+                    return (currentState.name === $scope.selectedState.name);
+                });
+                $scope.tableCityStatatistics = [];
+                tableState[0].cities.forEach(function (currentCity) {
+                    var cityStatistic = {
+                        name: '',
+                        statistic: {}
+                    }
+                    var statistic = currentCity.statistics.filter(function(currentStatistic) {
+                        return (currentStatistic.fueltype === $scope.selectedFuel.name);
+                    });
+
+                    cityStatistic.name = currentCity.name;
+                    cityStatistic.statistic = statistic[0];
+                    $scope.tableCityStatatistics.push(cityStatistic);
+                });
+            }, function(response) {
+                // Handling errors
+                $scope.responseStatusMessage = 'Error on calling the API!!';
             });
+        };
+
+        $scope.updateFilter = function() {
+            var tableState = $scope.jsonStates.filter(function (currentState) {
+                return (currentState.name === $scope.selectedState.name);
+            });
+            $scope.tableCityStatatistics = [];
+            tableState[0].cities.forEach(function (currentCity) {
+                var cityStatistic = {
+                    name: '',
+                    statistic: {}
+                }
+                var statistic = currentCity.statistics.filter(function(currentStatistic) {
+                    return (currentStatistic.fueltype === $scope.selectedFuel.name);
+                });
+
+                cityStatistic.name = currentCity.name;
+                cityStatistic.statistic = statistic[0];
+                $scope.tableCityStatatistics.push(cityStatistic);
+            });
+            $scope.responseStatusMessage = 'Update Table!!';
         };
     }
 
