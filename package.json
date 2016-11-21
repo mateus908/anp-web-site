@@ -1,12 +1,11 @@
 {
-  "name": "Rin",
+  "name": "ANP",
   "version": "1.0.0",
   "description": "Angular & Bootstrap 4 dashboard boiler",
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Matt Christians <christians.matt@gmail.com> (http://mdchristians.com)",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {

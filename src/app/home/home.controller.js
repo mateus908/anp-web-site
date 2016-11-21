@@ -68,7 +68,7 @@
                         statistic: {}
                     }
                     var statistic = currentCity.statistics.filter(function(currentStatistic) {
-                        return (currentStatistic.fueltype === $scope.selectedFuel.name);
+                        return (currentStatistic.fuel_type === $scope.selectedFuel.name);
                     });
 
                     cityStatistic.name = currentCity.name;
@@ -92,7 +92,7 @@
                     statistic: {}
                 }
                 var statistic = currentCity.statistics.filter(function(currentStatistic) {
-                    return (currentStatistic.fueltype === $scope.selectedFuel.name);
+                    return (currentStatistic.fuel_type === $scope.selectedFuel.name);
                 });
 
                 cityStatistic.name = currentCity.name;

@@ -1,10 +1,7 @@
 {
-  "name": "Rin",
+  "name": "ANP",
   "description": "Angular & Bootstrap 4 dashboard boiler",
   "main": "gulpfile.js",
-  "authors": [
-    "Matt Christians <christians.matt@gmail.com> (http://mdchristians.com)"
-  ],
   "license": "MIT",
   "homepage": "http://www.mdchristians.com/",
   "dependencies": {
