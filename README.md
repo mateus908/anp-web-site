@@ -1,4 +1,4 @@
-# ANP Web Site
+# ANP Front-End
 
 Front-End App that consumes data from obtained from anp-web-service's API.
 
